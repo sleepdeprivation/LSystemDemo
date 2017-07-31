@@ -1,0 +1,33 @@
+.NumberBox .form-group *{
+  display: inline-block;
+}
+
+.NumberBox .form-group{
+  position: relative;
+}
+
+.NumberBox .form-group input{
+  width: 3em;
+}
+
+.NumberBox .form-group button{
+  width: 2em;
+  height: 50%;
+  position: absolute;
+}
+
+.NumberBox .form-group .button-plus{
+  top: 50%;
+}
+
+.NumberBox .form-group .button-minus{
+  top: 0%;
+  text-align: center;
+}
+
+.NumberBox .form-group button span{
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  font-size: .7em;
+}
