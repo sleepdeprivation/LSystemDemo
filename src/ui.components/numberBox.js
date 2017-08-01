@@ -14,21 +14,22 @@ class NumberBox extends Component {
   }
 
   increment(){
-    this.onChange({type: 'increment', newValue: this.state.count + 1});
+    this.onChange(this.state.count + 1);
     this.setState({
       count : this.state.count + 1
-    })
+    });
   }
 
   decrement(){
-      this.onChange({type: 'decrement', newValue: this.state.count - 1});
-      this.setState({
-        count : this.state.count - 1
-      });
+    this.onChange(this.state.count - 1);
+    this.setState({
+      count : this.state.count - 1
+    });
   }
 
   numberChanged(e){
-    this.onChange({type: 'change', newValue: e.target.value});
+    console.log(e)
+    this.onChange(e.target.value);
     this.setState({
       count : e.target.value
     });
@@ -44,10 +45,10 @@ class NumberBox extends Component {
           value={this.state.count}
           onChange={this.numberChanged.bind(this)} />
           <Button className="button-minus" onClick={this.decrement.bind(this)}>
-            <span className="glyphicon glyphicon-minus"></span>
+            -
           </Button>
           <Button className="button-plus" onClick={this.increment.bind(this)}>
-            <span className="glyphicon glyphicon-plus"></span>
+            +
           </Button>
         </FormGroup>
       </div>

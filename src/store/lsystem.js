@@ -6,6 +6,8 @@ class LSystemStore extends EventEmitter{
 
   system : any;
   lineWidth = 50;
+  startX = 0;
+  startY = 0;
 
   constructor(){
     super();
@@ -34,6 +36,14 @@ class LSystemStore extends EventEmitter{
     return this.seed;
   }
 
+  getStartX(){
+    return this.startX;
+  }
+
+  getStartY(){
+    return this.startY;
+  }
+
   changeSeed(seed){
     this.system.instructions = seed;
     this.seed = seed;
@@ -58,6 +68,14 @@ class LSystemStore extends EventEmitter{
     console.log("set line width!", newValue, this.lineWidth)
   }
 
+  startXChange(newValue){
+    this.startX = newValue;
+  }
+
+  startYChange(newValue){
+    this.startY = newValue;
+  }
+
   handleActions(actions){
     console.log("got action!", actions)
     switch(actions.type){
@@ -75,6 +93,12 @@ class LSystemStore extends EventEmitter{
         break;
       case 'lineWidthChange':
         this.lineWidthChange(actions.newValue)
+        break;
+      case 'startXChange':
+        this.startXChange(actions.newValue)
+        break;
+      case 'startYChange':
+        this.startYChange(actions.newValue)
         break;
       default:
 

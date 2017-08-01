@@ -37,6 +37,12 @@ export default class CanvasWrapper extends Component {
         increment : systemStore.getLineWidth(),
       }
       this.renderer = (new lsystems.LSystemRenderer(renderCfg));
+
+      this.renderer.startX -= systemStore.getStartX();
+      this.renderer.startY -= systemStore.getStartY();
+      console.log(systemStore.getStartX(), systemStore.getStartY());
+      console.log("renderer created", this.renderer);
+      
       this.renderer.clear();
       this.renderer.draw();
   }

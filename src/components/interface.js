@@ -60,12 +60,21 @@ export default class Interface extends Component {
   }
 
   lineWidthChange(e){
-    console.log("changed nbox!");
+    console.log("changed nbox!", e);
     this.setState({
-      lineWidth: e.newValue
+      lineWidth: e
     });
-    dispatcher.dispatch({type: "lineWidthChange", newValue: e.newValue});
+    dispatcher.dispatch({type: "lineWidthChange", newValue: e});
   }
+
+  startXChange(e){
+    dispatcher.dispatch({type: "startXChange", newValue: e});
+  }
+
+  startYChange(e){
+    dispatcher.dispatch({type: "startYChange", newValue: e});
+  }
+
 
   render() {
     console.log("rednering", this.state);
@@ -85,14 +94,29 @@ export default class Interface extends Component {
               <ControlLabel>Rules</ControlLabel>
               <FormControl componentClass="textarea" value={this.state.rules} onChange={this.rulesetChanged.bind(this)} />
             </FormGroup>
-            <FormGroup controlId="ruleset">
-              {this.state.lineWidth}
-              <NumberBox
-                className="generateButton"
-                label="Line Width"
-                count={this.state.lineWidth}
-                onChange={this.lineWidthChange.bind(this)}></NumberBox>
-            </FormGroup>
+            <div className="upDown" >
+              <FormGroup controlId="upDown">
+                <NumberBox
+                  className="generateButton"
+                  label="increment"
+                  count={this.state.lineWidth}
+                  onChange={this.lineWidthChange.bind(this)}></NumberBox>
+              </FormGroup>
+              <FormGroup controlId="ruleset">
+                <NumberBox
+                  className="generateButton"
+                  label="startX"
+                  count={this.state.startX}
+                  onChange={this.startXChange.bind(this)}></NumberBox>
+              </FormGroup>
+              <FormGroup controlId="ruleset">
+                <NumberBox
+                  className="generateButton"
+                  label="startY"
+                  count={this.state.startY}
+                  onChange={this.startYChange.bind(this)}></NumberBox>
+              </FormGroup>
+            </div>
             <Button className="generateButton" onClick={this.clickedGenerate} >Generate</Button>
             <Button className="generateButton" onClick={this.clickedStep} >Step Once</Button>
           </form>

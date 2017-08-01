@@ -3,3 +3,15 @@
 .generateButton{
   float: right;
 }
+
+.upDown *{
+  display: inline;
+}
+
+.title-button-container *{
+    display: inline;
+}
+
+.open-button{
+  float: right;
+}
